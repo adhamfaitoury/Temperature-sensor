@@ -32,6 +32,14 @@ ISR(ADC_vect){
     temp *=4.9; //1 degree is 4.9 mv
     temp /=10;// in oC
     
+    if (temp>=50){
+       setPINA(Buzzer);
+    }
+       else{
+           resetPIN(Buzzer,portA);
+       }
+    
+    
     char buffer[20];
     itoa(temp,buffer,10);
     LCD_String_xy(0, 7, cl);
